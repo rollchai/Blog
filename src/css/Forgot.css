@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
+        body {
+  font-family: 'Poppins', sans-serif;
+}   
+.forgot-box{
+
+    background-color: #FFFFFF;
+    box-shadow:0px 3px 12px 0px #2F2B3D24;
+}
+.logo-image{
+    width: 202.87px;
+    height: 54.36px;
+}
+
+.firstinfo{
+    width: 364px;
+    height: 44px;
+color: #2F2B3DB2;
+font-weight: 400;
+font-style: normal;
+font-size: 16px;
+line-height: 22px;
+letter-spacing: 0px;
+}
+
+.firstrow_content{
+    width:364px;
+    font-weight: 500;
+    font: medium;
+    font-size: 24px;
+    line-height: 38px;
+    letter-spacing: 0px;
+    color: #2F2B3DE5;
+}
+.info_input{
+    width: 364px;
+height: 57px;
+}
+.info_input label{
+    width: 123px;
+height: 15px;
+font-weight: 400;
+font-style: normal;
+font-size: 13px;
+line-height: 15px;
+letter-spacing: 0px;
+color: #2F2B3DE5;
+margin-bottom: 6px;
+}
+.btn{
+   background-color:#017CBE ;
+   color: #FFFFFF;
+width: 364px;
+height: 38px;
+} 
+
+
+.firstrow{
+    margin-top: 20px;
+}
+.firstrow,
+.info_input {
+  text-align: left;
+}

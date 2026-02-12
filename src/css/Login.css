@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
+        body {
+  font-family: 'Poppins', sans-serif;
+}   
+.login-box{
+    background-color: #FFFFFF;
+    box-shadow:0px 3px 12px 0px #2F2B3D24;
+}
+.logo-image{
+    width: 202.87px;
+    height: 54.36px;
+}
+.content{
+    width: 364px;
+    height: 416px; 
+    margin-top: 40px; 
+}
+.firstrow{
+width: 364px;
+height:86px;
+
+}
+.firstinfo{
+    width: 364px;
+    height: 44px;
+color: #2F2B3DB2;
+font-weight: 400;
+font-style: normal;
+font-size: 16px;
+line-height: 22px;
+letter-spacing: 0px;
+}
+
+.firstrow_content{
+    width:364px;
+    height: 38px;
+    font-weight: 500;
+    font: medium;
+    font-size: 24px;
+    line-height: 38px;
+    letter-spacing: 0px;
+    color: #2F2B3DE5;
+}
+.info_input{
+    width: 364px;
+height: 57px;
+position: relative;
+}
+.info_input label{
+    width: 123px;
+height: 15px;
+font-weight: 400;
+font-style: normal;
+font-size: 13px;
+line-height: 15px;
+letter-spacing: 0px;
+color: #2F2B3DE5;
+margin-bottom: 6px;
+}
+
+
+.privacy_content input{
+    width: 18px;
+height: 18px;
+gap: 10px;
+padding: 3px;
+accent-color:#017CBE;
+box-shadow: 0px 2px 6px 0px #7367F04D;
+}
+.privacy_content label{
+    color: #2F2B3DE5;
+font-weight: 400;
+font-style: normal;
+font-size: 15px;
+line-height: 22px;
+letter-spacing: 0px;
+height: 22px;
+}
+.privacy_content span{
+    right:30px;
+      font-weight: 400;
+    font-style:normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    color: #017CBE;
+}
+.forgot{
+    margin-left: 95px;
+    color: #017CBE; 
+font-weight: 400;
+font-style: normal;
+font-size: 15px;
+line-height: 22px;
+letter-spacing: 0px;
+text-align: right;
+}
+.btn{
+   background-color:#017CBE ;
+   color: #FFFFFF;
+width: 364px;
+height: 38px;
+}   
+.sign_in{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+.sign_in span{
+font-weight: 400;
+font-style: normal;
+font-size: 15px;
+line-height: 22px;
+letter-spacing: 0px;
+text-align: center;
+color:#017CBE
+}
+.new{
+font-weight: 400;
+font-style: normal;
+font-size: 15px;
+line-height: 22px;
+letter-spacing: 0px;
+text-align: center; 
+width: 364px;
+height: 22px;
+}
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  top: 71%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}   
+.oval-icon{
+    position: absolute;
+  right: 19px;
+  top: 72%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+input{
+    width: 364px;
+    height: 38px;
+    border: 1px solid #2F2B3D66;
+}
+/* .no-hover {
+  pointer-events: none;
+} */

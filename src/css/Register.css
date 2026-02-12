@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');   
+    body {
+  font-family: 'Poppins', sans-serif;
+}   
+
+.register-box{
+    transform: rotate(0deg);       
+background-color:#FFFFFF;
+box-shadow:0px 3px 12px 0px #2F2B3D24 ;
+}
+
+.blog-img
+{
+    width: 202.87px;
+    height: 54.36px;
+    gap: 11px;
+}
+
+.contentt{
+margin-top: 40px;
+width: 364px;
+
+}
+.firstrow{
+width: 364px;
+height:86px;
+
+}
+.firstinfo{
+color: #2F2B3DB2;
+font-weight: 400;
+font-style: normal;
+font-size: 15px;
+line-height: 22px;
+letter-spacing: 0px;
+}
+
+.firstrow_content{
+    width:364px;
+    height: 38px;
+    font-weight: 500;
+    font: medium;
+    font-size: 24px;
+    line-height: 38px;
+    letter-spacing: 0px;
+    color: #2F2B3DE5;
+}
+
+.labl label{
+width:68px ;
+color: #2F2B3DE5    ;
+font-weight: 400;
+font-style: normal;
+font-size: 13px;
+line-height: 15px;
+letter-spacing: 0px;
+margin-bottom: 5px;
+}
+input{
+    width: 364px;
+    height: 38px;
+    border: 1px solid #2F2B3D66;
+    background-color: #017CBE;
+}
+
+.privacy_content{
+gap: 8px;
+}
+.privacy_input{
+    width: 18px;
+    height: 18px;
+    padding: 6px;
+    gap: 10px;
+   accent-color:#017CBE ;
+    border-radius: 30px;
+}
+.privacy_content label{
+    width: 243px;
+    height: 22px;
+    font-weight: 400;
+    font-style: normal;
+    font-size:15px ;
+    line-height: 22px;
+    letter-spacing: 0px;
+    font: #2F2B3DE5;
+}
+
+span{
+    font-weight: 400;
+    font-style:normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    color: #017CBE;
+}
+.btn{
+   background-color:#017CBE ;
+   color: #FFFFFF;
+width: 364px;
+height: 38px;
+}
+.sign_in{
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+
+.eyee-icon {
+  position: absolute;
+  transform: translateY(-50%);
+  cursor: pointer;
+    right: 33px;
+  top: 66%;
+}
+.ovall-icon{
+    position: absolute;
+  transform: translateY(-50%);
+  cursor: pointer;
+    right: 38px;
+  top: 66%;
+}
+
+a:link {
+  color: white ;
+}
