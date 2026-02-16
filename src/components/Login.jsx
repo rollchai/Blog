@@ -4,15 +4,32 @@ import pathicon from '../assets/Path.png'
 import ovalicon from '../assets/Oval.png'
 import logo from '../assets/Frame 1000005431.png'
 import { useState } from 'react'
+import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
-    const [email, setemail] = useState()
-    const [password, setpassword] = useState()
-
-    const onlogin=()=>{
-    console.log(email)
-    console.log(password)
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState("")
+const navigate=useNavigate()
+  const loginpage=async()=>{
+    const payloader={
+        email:email,
+        password:password
     }
+    const data=await axios.post("https://project2-api.bosselt.com/api/user/login",payloader)
+console.log(data)
+if(data.data.data.token){
+    const tok=data.data.data.token
+    localStorage.setItem("token",tok)
+    console.log(tok)
+    toast.success(data.data.message)
+    setTimeout(() => {
+        navigate("/")
+    }, 2000);
+}
+  }
   return (
+    <div className="d-flex align-items-center vh-100 justify-content-center">
       <div className="login-box rounded p-4">
         <div className=" text-center gap-3">
             <img className="logo-image gap-6 mt-3" src={logo} alt=""/>
@@ -41,11 +58,13 @@ const Login = () => {
     <label>Remember Me</label>
    <a href='/forgot'> <div className="forgot">Forgot Password?</div></a>
  </div>
-<button className="rounded btn mt-4 " onClick={onlogin}>Login</button>
+<button className="rounded btn mt-4 " onClick={loginpage}>Login</button>
 <div className="d-flex justify-content-center gap new">
 <div className="mt-4 sign_in">New on our platform? <a href='/register'> <span> Create an account</span></a> </div>
 </div>
         </div>
+    </div>
+    <ToastContainer/>
     </div>
   )
 }

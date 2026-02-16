@@ -1,35 +1,40 @@
+
 import React, { useEffect } from 'react'
 import '../css/Addblog.css'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { toast,ToastContainer  } from 'react-toastify'
 
 // import { Link } from 'react-router-dom'
 import logo from "../assets/Frame 1000005431 copy.png"
-const Addblog = () => {
-  const [title, settitle] = useState()
-  const [description, setdescription] = useState()
-
+const Testedit = () => {
+   const [Blogtitle, setBlogtitle] = useState("")
+  const [Blogdescription, setBlogdescription] = useState("")
   const navigate=useNavigate()
+const {id,title,description}=useParams()
 
-  const appblog=async()=>{
-    let payload={
-      title:title,
-      description:description
+ useEffect(() => {
+     console.log("Params:", id, title, description) 
+    if (title && description) {
+      setBlogtitle(decodeURIComponent(title))
+      setBlogdescription(decodeURIComponent(description))
     }
-    try {
-  const data=await axios.post("https://project2-api.bosselt.com/api/user/addDummyBlog",payload)
-  toast.success("Blog Added Succesfully")
-  navigate("/testget")
-  console.log(data)
-} catch (error) {
-  console.log("not")
-}
-  }
-  
+  }, [title, description])
 
-  return (
+  const editfun=async()=>{
+       let payload={
+      title:Blogtitle,
+      description:Blogdescription
+    }
+    const data=await axios.put(`https://project2-api.bosselt.com/api/user/updateDummyBlog/${id}`,payload)
+ toast.success("Updated Successfully", {
+  onClose: () => navigate("/testget")
+});
+
+  }
+  return (  
 <>
 <section className="nav sticky-top">
          <div className="container">
@@ -60,7 +65,7 @@ const Addblog = () => {
   <label>Title</label>
     
     <div>
-  <input type="text" placeholder='write here' className='p-3' onChange={(e)=>settitle(e.target.value)} />
+  <input type="text"   value={Blogtitle} placeholder='write here' className='p-3' onChange={(e)=>setBlogtitle(e.target.value)} />
     </div>
   </div>
   
@@ -69,7 +74,7 @@ const Addblog = () => {
     <label>Description</label>
     </div>
     <div>
-    <textarea name="message" id="" placeholder='write here' className='p-3' onChange={(e)=>setdescription(e.target.value)}/>
+    <textarea name="message" id="" value={Blogdescription} placeholder='write here' className='p-3' onChange={(e)=>setBlogdescription(e.target.value)}/>
     </div>
   </div>
 
@@ -81,7 +86,7 @@ const Addblog = () => {
 
     <input type="file" className='p-3'onChange={(e)=>setimage(e.target.value)} />
     </div> */}
-  <button className='p-3 rounded mt-4' onClick={appblog}>save</button>
+  <button className='p-3 rounded mt-4' onClick={editfun}>Edit</button>
   </div>
     
    <ToastContainer /> 
@@ -93,4 +98,5 @@ const Addblog = () => {
   )
 } 
 
-export default Addblog
+
+export default Testedit

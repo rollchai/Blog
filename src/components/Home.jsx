@@ -25,9 +25,19 @@ import location from "../assets/location.png"
 import mail from "../assets/mail.png"
 import applogo from "../assets/Frame 10000053411111.png"
 import footer_Logo from "../assets/Frame 1000005431 (1).png"
+import { useNavigate } from 'react-router-dom'
+import { toast,ToastContainer } from "react-toastify";
 import { useState } from 'react'
 const Home = () => {
   const [blog, setblog] = useState([])
+  const navigate=useNavigate()
+  const logout=()=>{
+    localStorage.clear("token");
+toast.success("log out successfully")
+setTimeout(() => {
+  navigate("/login")
+}, 2000);
+  }
   return (
      <>
    <section className="bar sticky-top">
@@ -43,9 +53,8 @@ const Home = () => {
         <li className="list-group-item border-0 light">My Blogs</li>
         <li className="list-group-item border-0 light">Contact us</li>
         <li className="list-group-item border-0 p-0 ms-2  ">
-            <a href='/register'>
-          <button className="btn custom-btn">Sign In</button>
-          </a>
+          <button className="btn custom-btn" onClick={logout}>Log Out</button>
+    
         </li>
       </ul>
     </div>

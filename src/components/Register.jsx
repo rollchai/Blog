@@ -4,18 +4,43 @@ import ovalicon from "../assets/Oval.png";
 import logo from "../assets/Frame 1000005431.png";
 import "../css/Register.css";
 import { useState } from "react";
+import axios from "axios";
+import { toast,ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
-  const [username, setusername] = useState();
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [username, setusername] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
-  const onsumitbtn = () => {
-    alert("register succesfull");
-    console.log(username);
-    console.log(email);
-    console.log(password);
-  };
-  // console.log(username)
+  const navigate=useNavigate()
+
+
+
+  
+  const registeration=async()=>{
+   try {
+     const payload={
+      name:username,
+      email:email,
+      password:password
+    }
+    const data=await axios.post("https://project2-api.bosselt.com/api/user/register",payload)
+    console.log(data.data.data.token)
+       if (data.data.data.token) {
+      localStorage.setItem("token",data.data.data.token);
+toast.success(data.data.message)
+setTimeout(() => {
+  navigate("/Login")
+}, 2000);
+  } else {
+      toast.error(data.data.message);
+    }
+   } catch (error) {
+    console.log(error)
+   }
+  }
+
+
   return (
     <div className="d-flex align-items-center vh-100 justify-content-center">
       <div className="register-box rounded p-4 ">
@@ -89,7 +114,7 @@ const Register = () => {
             </label>
           </div>
 
-          <button className="rounded btn mt-4" onClick={onsumitbtn}>
+          <button className="rounded btn mt-4" onClick={registeration}>
             sign Up
           </button>
           <div className="d-flex justify-content-center">
@@ -102,6 +127,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>  
     </div>
   );
 };
