@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { toast,ToastContainer  } from 'react-toastify'
 
-// import { Link } from 'react-router-dom'
 import logo from "../assets/Frame 1000005431 copy.png"
 const Testedit = () => {
    const [Blogtitle, setBlogtitle] = useState("")
@@ -18,8 +17,8 @@ const {id,title,description}=useParams()
  useEffect(() => {
      console.log("Params:", id, title, description) 
     if (title && description) {
-      setBlogtitle(decodeURIComponent(title))
-      setBlogdescription(decodeURIComponent(description))
+      setBlogtitle(title)
+      setBlogdescription(description)
     }
   }, [title, description])
 
@@ -28,11 +27,11 @@ const {id,title,description}=useParams()
       title:Blogtitle,
       description:Blogdescription
     }
-    const data=await axios.put(`https://project2-api.bosselt.com/api/user/updateDummyBlog/${id}`,payload)
- toast.success("Updated Successfully", {
-  onClose: () => navigate("/testget")
-});
-
+    const data=await axios.put(`https://projsect2-api.bosselt.com/api/user/updateDummyBlog/${id}`,payload)
+toast.success("blog uploded succesfully")
+setTimeout(() => {
+  navigate("/testget")
+}, 2000);
   }
   return (  
 <>
@@ -65,7 +64,7 @@ const {id,title,description}=useParams()
   <label>Title</label>
     
     <div>
-  <input type="text"   value={Blogtitle} placeholder='write here' className='p-3' onChange={(e)=>setBlogtitle(e.target.value)} />
+  <input type="text" value={Blogtitle} placeholder='write here' className='p-3' onChange={(e)=>setBlogtitle(e.target.value)} />
     </div>
   </div>
   

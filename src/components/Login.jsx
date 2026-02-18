@@ -24,8 +24,11 @@ if(data.data.data.token){
     console.log(tok)
     toast.success(data.data.message)
     setTimeout(() => {
-        navigate("/")
+        navigate(`/`)
     }, 2000);
+}
+else{
+    toast.error(data.data.message)
 }
   }
   return (

@@ -14,6 +14,7 @@ import Testedit from './components/Testedit'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './components/protectedRoutes/ProtectedRoute'
+import Updateprofile from './components/Updateprofile'
 function App() {
 
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path='/add' element={<Addblog/>}/>
       <Route path='/edit/:id/:title/:description' element={<Testedit/>}/>
       <Route path='/testget' element={<Testget/>}/>
+      <Route path='/updateprofile' element={<Updateprofile/>}/>
     </Routes>
     <ToastContainer/>
     </>

@@ -8,24 +8,39 @@ import { toast,ToastContainer  } from 'react-toastify'
 // import { Link } from 'react-router-dom'
 import logo from "../assets/Frame 1000005431 copy.png"
 const Addblog = () => {
-  const [title, settitle] = useState()
-  const [description, setdescription] = useState()
-
+ 
+const [formData, setformData] = useState({
+  title:"",
+  description:"",
+  file:null
+})
   const navigate=useNavigate()
 
+  const handlechange=(e)=>{
+    setformData({
+      ...formData,
+      [e.target.name]:e.target.value
+    })
+  }
   const appblog=async()=>{
-    let payload={
-      title:title,
-      description:description
-    }
+    const sendData=new FormData()
+    sendData.append("title",formData.title)
+    sendData.append("description",formData.description)
+    sendData.append("image",formData.file)
     try {
-  const data=await axios.post("https://project2-api.bosselt.com/api/user/addDummyBlog",payload)
+      const token=localStorage.getItem("token")
+  const data=await axios.post("https://project2-api.bosselt.com/api/user/add-Blog",sendData,{
+    headers:{
+      Authorization:token
+    }
+  })
   toast.success("Blog Added Succesfully")
-  navigate("/testget")
+  navigate("/")
   console.log(data)
 } catch (error) {
-  console.log("not")
+  console.log("REAL ERROR:", error.response?.data);
 }
+
   }
   
 
@@ -60,7 +75,7 @@ const Addblog = () => {
   <label>Title</label>
     
     <div>
-  <input type="text" placeholder='write here' className='p-3' onChange={(e)=>settitle(e.target.value)} />
+  <input type="text" name='title' placeholder='write here' className='p-3' onChange={handlechange} />
     </div>
   </div>
   
@@ -69,18 +84,20 @@ const Addblog = () => {
     <label>Description</label>
     </div>
     <div>
-    <textarea name="message" id="" placeholder='write here' className='p-3' onChange={(e)=>setdescription(e.target.value)}/>
+    <textarea  name="description" id="" placeholder='write here' className='p-3' onChange={handlechange}/>
     </div>
   </div>
 
   <div className='imagespace container mt-4'>
-    {/* <div className='filelabel'>
+    <div className='filelabel'>
     <label>Upload image</label>
     </div>
     <div>
 
-    <input type="file" className='p-3'onChange={(e)=>setimage(e.target.value)} />
-    </div> */}
+    <input type="file" name='file' className='p-3'onChange={(e)=>setformData({...formData,
+      file:e.target.files[0]}
+    )} />
+    </div>
   <button className='p-3 rounded mt-4' onClick={appblog}>save</button>
   </div>
     

@@ -16,7 +16,7 @@ setTimeout(() => {
   navigate('/login')
 }, 1000);
     } catch (error) {
-      toast.error("failed")
+      toast.error("Failed to send")
     }
   }
   return (

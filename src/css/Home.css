@@ -67,3 +67,16 @@ vertical-align: middle;
 .custom-btn {
   width: 120px;  
 }
+.profilecolor{
+    background: #E8F7FF;
+    
+height: 52px;
+gap: 9px;
+border-radius: 4px;
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 4px;
+padding-left: 12px;
+padding-bottom: 4px;
+text-align: center;
+}

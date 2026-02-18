@@ -25,7 +25,7 @@ import location from "../assets/location.png"
 import mail from "../assets/mail.png"
 import applogo from "../assets/Frame 10000053411111.png"
 import footer_Logo from "../assets/Frame 1000005431 (1).png"
-const AfterLoginhome = () => {
+const   AfterLoginhome = () => {
   return (
     <>
      <section className="nav sticky-top">
@@ -424,51 +424,51 @@ const AfterLoginhome = () => {
               </div>
             </div>
             </div>
-            <section class="back pt-5 pb-4 mt-5">
-              <div class="container">
-                <div class="row align-items-start">
+            <section className="back pt-5 pb-4 mt-5">
+              <div className="container">
+                <div className="row align-items-start">
             
                   {/* <!-- Left Content --> */}
-                  <div class="col-md-5">
-                    <div class="p-3">
-                      <img src={footer_Logo} alt="" class="mb-3"/>
-                      <p class="mt-3">
+                  <div className="col-md-5">
+                    <div className="p-3">
+                      <img src={footer_Logo} alt="" className="mb-3"/>
+                      <p className="mt-3">
                         Most developer friendly & highly <br/> customisable Admin Dashboard Template.
                       </p>
-                      <img src={applogo} alt="" class="mt-3"/>
+                      <img src={applogo} alt="" className="mt-3"/>
                     </div>
                   </div>
             
                   {/* <!-- Right Links --> */}
-                  <div class="col-md-7 lh-lg mt-3">
-                    <div class= "row">
+                  <div className="col-md-7 lh-lg mt-3">
+                    <div className= "row">
             
-                      <div class="col-md-4">
+                      <div className="col-md-4">
                         <h5>Company</h5>
                         <p>About us</p>
                         <p>Blogs</p>
                       </div>
             
-                      <div class="col-md-4 ">
+                      <div className="col-md-4 ">
                         <h5>Quick Links</h5>
                         <p >Terms of service</p>
                         <p >Privacy Policy</p>
                         <p>Get in Touch</p>
                       </div>
             
-                      <div class="col-md-4 ">
+                      <div className="col-md-4 ">
                         <h5>Contact us</h5>
-                        <div class="d-flex align-items-center">
+                        <div className="d-flex align-items-center">
                         <img src={mail} alt=""/>
-                        <p class="ms-2">info@companyname.com</p>
+                        <p className="ms-2">info@companyname.com</p>
                         </div>
-                        <div class="d-flex align-items-center">
+                        <div className="d-flex align-items-center">
                         <img src={phone} alt=""/>
-                        <p class="ms-2">(123) 456-789</p>
+                        <p className="ms-2">(123) 456-789</p>
                         </div>
-                        <div class="d-flex align-items-center">
+                        <div className="d-flex align-items-center">
                         <img src={location} alt=""/>
-                        <p class="ms-2">1234 Street Name, State, Zip Code</p>
+                        <p className="ms-2">1234 Street Name, State, Zip Code</p>
                         </div>
                       </div>
             
@@ -477,7 +477,7 @@ const AfterLoginhome = () => {
             
                 </div>
                 <hr/>
-                <div class="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center align-items-center">
                   <div>© 2025 Blogs, All rights reserved</div>
                 </div>
               </div>

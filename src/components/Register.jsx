@@ -14,9 +14,6 @@ const Register = () => {
 
   const navigate=useNavigate()
 
-
-
-  
   const registeration=async()=>{
    try {
      const payload={
