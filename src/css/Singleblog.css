@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); 
+
+       body {
+  font-family: 'Poppins', sans-serif;
+} 
+.navi{
+ box-shadow: 0px 2px 20px 0px #017CBE26;
+ background-color:#FFFFFF;
+}
+p{
+    color: #17171780;
+}
+.benefits li{
+    font-weight:bolder;
+ margin-left: 19px;
+}
+.benefits p{
+    width: 750px;
+height: 80px;
+top: 474px;
+left: 61px;
+}
+.admin{
+    color: #A7A7A7;
+}
+.lis li{
+    font-size: 20px;
+}
+.img-size{
+    width: 850px;
+height: 558.7315063476562px;
+top: 588px;
+left: 60px;
+border-radius: 20.74px;
+
+}
+.back{
+    background-color: #212121;
+}
+.para p{
+    color: #FFFFFF;
+}
+.para h5{
+    color: #FFFFFF;
+}
+.white{
+    color: aliceblue;
+}
+.size{
+    width: 380px;
+height: 243.48390197753906px;
+top: -110.58px;
+}
+h6{
+font-weight: 500;
+font-style: Medium;
+font-size: 20px;
+line-height: 31.9px;
+letter-spacing: 0%;
+text-transform: capitalize;
+}
+.marg{
+    margin-left: 236px;
+}
+.shadoww{
+    padding: 20px;
+    box-shadow: 0px 8px 15px 0px #017CBE1A;
+    width: 424px;
+height: 754px;
+padding: 15px;
+top: 149px;
+left: 956px;
+border-radius: 20.05px;
+}
+.concluion p{
+    width: 871px;
+height: 72px; 
+}

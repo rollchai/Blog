@@ -1,12 +1,11 @@
-import React from "react";
 import pathicon from "../assets/Path.png";
 import ovalicon from "../assets/Oval.png";
 import logo from "../assets/Frame 1000005431.png";
 import "../css/Register.css";
 import { useState } from "react";
 import axios from "axios";
-import { toast,ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [username, setusername] = useState("");
   const [email, setemail] = useState("");
@@ -117,14 +116,13 @@ setTimeout(() => {
           <div className="d-flex justify-content-center">
             <div className="mt-4 sign_in">
               Already have an account?{" "}
-              <a href="/login">
+              <Link to="/login">
                 <span>Sign in</span>
-              </a>{" "}
+              </Link>{" "}
             </div>
           </div>
         </div>
-      </div>
-      <ToastContainer/>  
+      </div> 
     </div>
   );
 };

@@ -3,11 +3,17 @@ import '../css/Forgot.css'
 import logo from '../assets/Frame 1000005431 copy.png'
 import { useState } from 'react'
 import axios from 'axios'
-import { toast, ToastContainer } from 'react-toastify'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import {  useNavigate } from 'react-router-dom'
 const Forgot = () => {
   const [forgot, setforgot] = useState("")
  const navigate=useNavigate()
+
+ const handlechange=(e)=>{
+ setforgot({
+     [e.target.name]:e.target.value
+  })
+ }
   const forgotdata=async()=>{
     try {
       const data=await axios.post("https://project2-api.bosselt.com/api/user/forgot-password",{email:forgot})
@@ -19,6 +25,7 @@ setTimeout(() => {
       toast.error("Failed to send")
     }
   }
+  
   return (
         <div className="d-flex align-items-center vh-100 justify-content-center">
  <div className="forgot-box rounded p-4">
@@ -33,12 +40,11 @@ setTimeout(() => {
 
 <div className="info_input">
     <label className="d-block">Email </label>
-  <input type="email" className="form-control" placeholder="Enter your email" onChange={(e)=>setforgot(e.target.value)}/>
+  <input type="email" className="form-control" placeholder="Enter your email" onChange={handlechange}/>
 </div>
 <button type="button" className=" btn mt-4 "onClick={forgotdata} >Send </button>
         </div>
         </div>
-        <ToastContainer/>
         </div>
   )
 }

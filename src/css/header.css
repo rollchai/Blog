@@ -1,0 +1,31 @@
+
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu-custom {
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+  right: 0;
+  width: 220px;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu-custom p {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.logout-btn {
+  width: 100%;
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+}

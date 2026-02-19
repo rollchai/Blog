@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import logo from "../assets/Frame 1000005431 copy.png"
-import { toast,ToastContainer  } from 'react-toastify'  
+import  { useState } from 'react'
+import { toast  } from 'react-toastify'  
 import frame from "../assets/profileframe.png"
 import "../css/Updateprofile.css"
 import axios from 'axios'
+import Header from './comman/header'
+import Footer from './comman/Footer'
 const Updateprofile = () => {
 const [formData, setformData] = useState({
   name:"",
@@ -13,65 +14,42 @@ const [formData, setformData] = useState({
 const handlechange=(e)=>{
 setformData({
   ...formData,
-  // ??
   [e.target.name]:e.target.value
 })
 }
-
+const handlechangefile=(e)=>{
+  setformData({
+    ...formData,
+  [e.target.name]:e.target.files[0]
+  })
+}
 const updateprofile=async()=>{
-  try {
+try {
     const token=localStorage.getItem('token')
-        const sendData = new FormData();
-    sendData.append("name", formData.name);
-    sendData.append("email", formData.email);
-    sendData.append("image", formData.image);
-    const data= await axios.patch("https://project2-api.bosselt.com/api/user/update-profile",sendData,{
-      headers:{
-        Authorization:token,
-
-      }
-    })
-    console.log(data)
-    toast.success("succesfully update")
-  } catch (error) {
-  console.log(error.response?.data);
+  const sendData=new FormData()
+  sendData.append("name",formData.name)
+  sendData.append("email",formData.email)
+  sendData.append("image",formData.image)
+  const data=await axios.patch("https://project2-api.bosselt.com/api/user/update-profile",sendData,{
+    headers:{
+      Authorization:token
+    }
+  })
+  console.log(data.data)
+  toast.success(data.data.message)
+} catch (error) {
+  toast.error("unable to update")
 }
-
 }
-
   return (
     <>
-<section className="nav sticky-top">
-         <div className="container">
-      <div className="d-flex align-items-center justify-content-between  p-3">
-        
-        <div>
-          <img src={logo} alt=""/>
-        </div>
-        <div>
-          <ul className="list-group list-group-horizontal-md align-items-center ">
-            <li className="list-group-item border-0 light">Home</li>
-            <li className="list-group-item border-0 light">My Blogs</li>
-            <li className="list-group-item border-0 light">Contact us</li>
-            <li className="list-group-item border-0 p-0 ms-2  ">
-                <a href='/register'>
-              <button className="btn btn-primary custom-btn">Sign In</button>
-              </a>
-            </li>
-          </ul>
-        </div>
-        </div>
-    </div>
-      </section>
+    <Header/>
       <div className=' container profile'>
   <h1>My Profile</h1></div>
       <div className='textspace container '>
         <div className='d-flex'>
 <img src={frame} alt="" className='mt-3'  />
-<input type="file" className='like' name='image'  onChange={(e)=>setformData({
-  ...formData,
-  image:e.target.files[0]
-})}/>
+<input type="file" className='like' name='image'  onChange={handlechangefile}/>
 
    </div>
   <div className='textspace container mt-5 '>
@@ -103,7 +81,8 @@ const updateprofile=async()=>{
   <button className='p-3 rounded mt-4' onClick={updateprofile}>save</button>
   </div>
        </div>
-   <ToastContainer /> 
+       <Footer/>
+
  </>
   )
 }
