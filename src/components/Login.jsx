@@ -7,21 +7,27 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { Formik, useFormik } from 'formik'
 const Login = () => {
-    const [formData, setformData] = useState({
+    const navigate=useNavigate()
+    const formik=useFormik({
+        initialValues:{
         email:"",
         password:""
-    })
-    const navigate=useNavigate()
-
-    const changehandler=(e)=>{
-setformData({
-    ...formData,
-    [e.target.name]:e.target.value
-})
-    }
-  const loginpage=async()=>{
-    const data=await axios.post("https://project2-api.bosselt.com/api/user/login",formData)
+        },
+    validate:(values)=>{
+        const errors={};
+if(!values.email){
+    errors.email="Email is Required"
+}
+if(!values.password){
+    errors.password="Password is Required"
+}
+return errors
+    },
+    onSubmit:async(values)=>{
+      try {
+         const data=await axios.post("https://project2-api.bosselt.com/api/user/login",values)
 console.log(data)
 if(data.data.success){
     const tok=data.data.data.token
@@ -35,7 +41,13 @@ if(data.data.success){
 else{
     toast.error("failed")
 }
-  }
+      } catch (error) {
+        toast.error("Login Failed") 
+      }
+    }
+ }) 
+
+ 
   return (
     <div className="d-flex align-items-center vh-100 justify-content-center">
       <div className="login-box rounded p-4">
@@ -48,32 +60,40 @@ else{
 <div className="firstrow_content "> Welcome to Blogs! 👋🏻</div>
 <div className="fs-regular firstinfo">Please sign-in to your account and start the adventure</div>
 </div>
-
+<form onSubmit={formik.handleSubmit}>
 <div className="info_input">
     <label className="d-block">Email or username</label>
-    <input type="email" name='email' className="form-control" placeholder="Enter your email or username" onChange={changehandler}/>
+    <input type="email" name='email' className="form-control" placeholder="Enter your email or username" onChange={formik.handleChange} value={formik.values.email}/>
 </div>
-
+{formik.errors.email && (
+    <small className='text-danger'>{formik.errors.email}</small>
+)}
 <div className="mt-4 info_input">
     <label className="d-block">Password</label>
-    <input type="password" name='password' className="form-control" placeholder="............" onChange={changehandler}/>
+    <input
+     type="password" name='password'   className="form-control" placeholder="............" onChange={formik.handleChange} value={formik.values.password}/>
     <img className="eye-icon w-2.6 " src={pathicon} alt=""/>
 <img className="oval-icon w-1" src={ovalicon} alt=""/>
 </div>
+{formik.errors.password && (
+    <small className='text-danger'>{formik.errors.password}</small>
+)}
  {/* checkbox */}
  <div className="privacy_content mt-4 d-flex">
  <input className="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input"/>
     <label>Remember Me</label>
    <Link to='/forgot'> <div className="forgot">Forgot Password?</div></Link>
  </div>
-<button className="rounded btn mt-4 " onClick={loginpage}>Login</button>
+<button className="rounded btn mt-4 " type='submit'>Login</button>
+</form>
 <div className="d-flex justify-content-center gap new">
 <div className="mt-4 sign_in">New on our platform? <Link to='/register'> <span> Create an account</span></Link> </div>
 </div>
         </div>
     </div>
     </div>
+    
   )
 }
 
-export default Login
+export default Login        

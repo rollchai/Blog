@@ -2,26 +2,35 @@ import pathicon from "../assets/Path.png";
 import ovalicon from "../assets/Oval.png";
 import logo from "../assets/Frame 1000005431.png";
 import "../css/Register.css";
-import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
 const Register = () => {
-  const [username, setusername] = useState("");
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
-
-  const navigate=useNavigate()
-
-  const registeration=async()=>{
-   try {
-     const payload={
-      name:username,
-      email:email,
-      password:password
-    }
-    const data=await axios.post("https://project2-api.bosselt.com/api/user/register",payload)
-    console.log(data.data.data.token)
+ 
+  const formik=useFormik({
+    initialValues:{
+      name:"",
+      email:"",
+      password:"",
+    },
+    validate:(values)=>{
+      const errors={}
+      if(!values.name){
+errors.username="username is required"
+      }
+      if(!values.email){
+        errors.email="username is email"
+      }
+      if(!values.password){
+      errors.password="username is password"
+      }
+      return errors
+    },
+    onSubmit:async(values)=>{
+      try {
+          const data=await axios.post("https://project2-api.bosselt.com/api/user/register",values)
+    console.log(data.data.data)
        if (data.data.data.token) {
       localStorage.setItem("token",data.data.data.token);
 toast.success(data.data.message)
@@ -29,13 +38,16 @@ setTimeout(() => {
   navigate("/Login")
 }, 2000);
   } else {
-      toast.error(data.data.message);
+      toast.error("Registration Failed");
     }
-   } catch (error) {
-    console.log(error)
-   }
-  }
+      } catch (error) {
+        toast.error("Registration Failed")
+      }
+    }
+  })
+  const navigate=useNavigate()
 
+  
 
   return (
     <div className="d-flex align-items-center vh-100 justify-content-center">
@@ -51,37 +63,50 @@ setTimeout(() => {
               Please sign-Up to your account and start the adventure
             </div>
           </div>
-
+<form onSubmit={formik.handleSubmit}>
           <div className="labl">
             <label className="d-block">Username</label>
             <input
               type="text"
+              name="name"
               className="form-control"
               placeholder="Enter your username"
-              onChange={(e) => setusername(e.target.value)}
+              value={formik.values.username}
+              onChange={formik.handleChange}
             />
+            {formik.errors.username&&(
+              <small className="text-danger"> {formik.errors.username}</small>
+            )}
           </div>
           <div className="mt-4 labl">
             <label className="d-block">Email</label>
             <input
               type="email"
+              name="email"
               className="form-control"
               placeholder="Enter your email"
-              onChange={(e) => {
-                setemail(e.target.value);
-              }}
+              onChange={formik.handleChange}
+              value={formik.values.email}
             />
+            {
+              formik.errors.email&&(
+                <small className="text-danger">{formik.errors.email}</small>
+              )
+            }
           </div>
           <div className="mt-4 labl">
             <label className="d-block">Password</label>
             <input
               type="password"
+              name="password"
               className="form-control p-relative"
               placeholder="..........."
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
+              onChange={formik.handleChange}
+              value={formik.values.password}
             />
+            {formik.errors.password&&(
+            <small className="text-danger">{ formik.errors.password}</small>
+            )}
             <img className="eyee-icon w-2.6 " src={pathicon} alt="" />
             <img className="ovall-icon w-1" src={ovalicon} alt="" />
           </div>
@@ -110,9 +135,10 @@ setTimeout(() => {
             </label>
           </div>
 
-          <button className="rounded btn mt-4" onClick={registeration}>
+          <button className="rounded btn mt-4" type="submit" >
             sign Up
           </button>
+          </form> 
           <div className="d-flex justify-content-center">
             <div className="mt-4 sign_in">
               Already have an account?{" "}

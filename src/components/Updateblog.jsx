@@ -2,6 +2,7 @@
 import Header from "./comman/header";
 import Footer from "./comman/Footer";
 const Updateblog = () => {
+ 
   return (
     <>
     <Header/>

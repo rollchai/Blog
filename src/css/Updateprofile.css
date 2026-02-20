@@ -119,3 +119,16 @@ padding-bottom: 11px;
 padding-left: 32px;
 
 }
+.btnsty{
+  background: red;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0px;
+}
